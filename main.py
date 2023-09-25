@@ -4,7 +4,7 @@ from source import mx_utils
 
 
 def new(filename: str):
-    mx_utils.create_plane_database(filename)
+    mx_utils.create_plane_database(filename, mx_csv="mx_records.csv", overwrite=True)
 
 
 if __name__ == '__main__':
