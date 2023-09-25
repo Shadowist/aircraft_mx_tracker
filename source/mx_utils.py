@@ -16,6 +16,7 @@ def _create_tables(conn: sqlite3.Connection) -> None:
     for logbook in logbooks:
         conn.execute(f"""
             CREATE TABLE IF NOT EXISTS {logbook} (
+                "Logbook"           TEXT,
                 "Date"              TEXT,
                 "Work Description"	TEXT,
                 "TTAF"              NUMERIC,

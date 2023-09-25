@@ -8,7 +8,6 @@ def create_connection(db_file) -> sql.Connection:
     conn = None
     try:
         conn = sql.connect(db_file)
-        print(sql.version)
     except sql.Error as error:
         print(error)
     return conn
