@@ -164,3 +164,4 @@ cython_debug/
 
 # Application
 databases/*
+ui.pyproject.user
