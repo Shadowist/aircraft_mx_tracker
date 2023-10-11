@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab_dashboard">
        <attribute name="title">
@@ -37,7 +37,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QTableWidget" name="tableWidget">
+         <widget class="QTableWidget" name="table_airframe">
           <column>
            <property name="text">
             <string>Date</string>
@@ -68,7 +68,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QTableWidget" name="tableWidget_2">
+         <widget class="QTableWidget" name="table_engine">
           <column>
            <property name="text">
             <string>Date</string>
@@ -99,7 +99,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
-         <widget class="QTableWidget" name="tableWidget_3">
+         <widget class="QTableWidget" name="table_propeller">
           <column>
            <property name="text">
             <string>Date</string>
@@ -130,7 +130,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QTableWidget" name="tableWidget_4">
+         <widget class="QTableWidget" name="table_avionics">
           <column>
            <property name="text">
             <string>Date</string>
@@ -161,7 +161,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
-         <widget class="QTableWidget" name="tableWidget_5">
+         <widget class="QTableWidget" name="table_adsb">
           <column>
            <property name="text">
             <string>Logbook</string>
