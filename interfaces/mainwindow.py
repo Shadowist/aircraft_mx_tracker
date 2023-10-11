@@ -16,6 +16,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.ui.tabWidget.currentChanged.connect(self.setup_tab)
+
     @property
     def filepath(self):
         return self._filepath
@@ -26,6 +28,42 @@ class MainWindow(QMainWindow):
 
         # TODO: This should be platform agnostic
         self.setWindowTitle(filepath.split("/")[-1])
+
+    # === Tab Setup ===
+    def setup_tab(self, index: int):
+        name: str = self.ui.tabWidget.tabText(index).lower()
+
+        if name == "ad/sb":
+            name = "adsb"
+
+        try:
+            getattr(self, f"setup_{name}")()
+        except AttributeError:
+            print(f"{name} is not currently set up!")
+
+    def setup_airframe(self):
+        pass
+
+    def setup_engine(self):
+        pass
+
+    def setup_avionics(self):
+        pass
+
+    def setup_propeller(self):
+        pass
+
+    def setup_adsb(self):
+        pass
+
+    def setup_squawks(self):
+        pass
+
+    def setup_dashboard(self):
+        pass
+
+    def setup_intervals(self):
+        pass
 
 
 if __name__ == "__main__":
