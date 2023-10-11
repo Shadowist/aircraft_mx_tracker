@@ -183,7 +183,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Date", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
         ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
@@ -192,7 +192,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem4 = self.tableWidget_2.horizontalHeaderItem(0)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Date", None));
         ___qtablewidgetitem5 = self.tableWidget_2.horizontalHeaderItem(1)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
         ___qtablewidgetitem6 = self.tableWidget_2.horizontalHeaderItem(2)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
         ___qtablewidgetitem7 = self.tableWidget_2.horizontalHeaderItem(3)
@@ -201,7 +201,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem8 = self.tableWidget_3.horizontalHeaderItem(0)
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Date", None));
         ___qtablewidgetitem9 = self.tableWidget_3.horizontalHeaderItem(1)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
         ___qtablewidgetitem10 = self.tableWidget_3.horizontalHeaderItem(2)
         ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
         ___qtablewidgetitem11 = self.tableWidget_3.horizontalHeaderItem(3)
@@ -210,7 +210,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem12 = self.tableWidget_4.horizontalHeaderItem(0)
         ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Date", None));
         ___qtablewidgetitem13 = self.tableWidget_4.horizontalHeaderItem(1)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
         ___qtablewidgetitem14 = self.tableWidget_4.horizontalHeaderItem(2)
         ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
         ___qtablewidgetitem15 = self.tableWidget_4.horizontalHeaderItem(3)
