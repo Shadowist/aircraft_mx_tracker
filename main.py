@@ -14,6 +14,7 @@ def new(filename: str):
 def open(filename: str):
     app = QApplication(sys.argv)
     widget = MainWindow()
+    widget.filepath = filename
     widget.show()
     sys.exit(app.exec())
 
