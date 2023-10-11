@@ -41,7 +41,41 @@
 					"--filename",
 					"N219GH"
 				]
+			},
+			{
+				"name": "Python (Open)",
+				"type": "python",
+				"request": "launch",
+				"program": "main.py",
+				"console": "integratedTerminal",
+				"args": [
+					"--open",
+					"--filename",
+					"databases/N219GH"
+				]
 			}
 		],
 	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Convert UI",
+				"command": "pyside6-uic",
+				"type": "shell",
+				"args": [
+					"interfaces/form.ui",
+					"-o",
+					"interfaces/ui_form.py"
+				],
+				"problemMatcher": [
+					"$tsc"
+				],
+				"presentation": {
+					"reveal": "always"
+				},
+				"group": "build"
+			}
+		]
+	}
 }

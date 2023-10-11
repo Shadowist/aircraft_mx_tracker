@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="tab_dashboard">
+       <attribute name="title">
+        <string>Dashboard</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_squawks">
+       <attribute name="title">
+        <string>Squawks</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_airframe">
+       <attribute name="title">
+        <string>Airframe</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_engine">
+       <attribute name="title">
+        <string>Engine</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_propeller">
+       <attribute name="title">
+        <string>Propeller</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_avionics">
+       <attribute name="title">
+        <string>Avionics</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
