@@ -11,7 +11,10 @@ from datetime import datetime
 def create_plane_database(tail_number: str, mx_csv: str = "", overwrite=False) -> None:
     """ Creates the database for the plane. """
     if overwrite:
-        os.remove(f"databases/{tail_number}")
+        try:
+            os.remove(f"databases/{tail_number}")
+        except OSError:
+            pass
 
     conn: sqlite3.Connection = sql_utils.create_connection(f"databases/{tail_number}")
 
@@ -54,7 +57,7 @@ def _import_mx_from_csv(filename: str, conn: sqlite3.Connection):
     with open(filename, 'r') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
 
-        for row in reader:
+        for index, row in enumerate(reader):
             cur = conn.cursor()
 
             desc = row['Work Description'].replace('"', '\'')
@@ -74,6 +77,7 @@ def _import_mx_from_csv(filename: str, conn: sqlite3.Connection):
 
             cmd = f"""
 INSERT INTO "{row['Logbook Type']}"
+("Tail Number", "Logbook", "Date of Service", "Work Description", "TTAF", "Tach")
 VALUES(
     "{row['Tail Number']}",
     "{row['Logbook Type']}",
@@ -91,7 +95,7 @@ def get_logs(conn: sqlite3.Connection, logbook: str):
     cur = conn.cursor()
 
     cmd = f'''
-SELECT "Date of Service", TTAF, Tach, "Work Description" FROM {logbook}
+SELECT ROWID, "Date of Service", TTAF, Tach, "Work Description" FROM {logbook}
 '''
 
     return cur.execute(cmd)

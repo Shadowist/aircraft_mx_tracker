@@ -65,6 +65,7 @@ class MainWindow(QMainWindow):
                 item: QTableWidgetItem = QTableWidgetItem(str(value))
                 getattr(self.ui, f"table_{logbook.lower()}").setItem(row, column, item)
         getattr(self.ui, f"table_{logbook.lower()}").resizeColumnsToContents()
+        getattr(self.ui, f"table_{logbook.lower()}").setColumnHidden(0, True)
 
     def setup_airframe(self):
         self._setup_mx_data("Airframe")
@@ -74,13 +75,13 @@ class MainWindow(QMainWindow):
     def connect_airframe_form(self, item: QTableWidgetItem):
         row = self.ui.table_airframe.row(item)
 
-        date_val: list[str] = self.ui.table_airframe.item(row, 0).text().split('-')
+        date_val: list[str] = self.ui.table_airframe.item(row, 1).text().split('-')
         date: QDate = QDate(int(date_val[0]), int(date_val[1]), int(date_val[2]))
 
         self.ui.airframe_date.setDate(date)
-        self.ui.airframe_ttaf.setValue(float(self.ui.table_airframe.item(row, 1).text()))
-        self.ui.airframe_tach.setValue(float(self.ui.table_airframe.item(row, 2).text()))
-        self.ui.airframe_description.setText(self.ui.table_airframe.item(row, 3).text())
+        self.ui.airframe_ttaf.setValue(float(self.ui.table_airframe.item(row, 2).text()))
+        self.ui.airframe_tach.setValue(float(self.ui.table_airframe.item(row, 3).text()))
+        self.ui.airframe_description.setText(self.ui.table_airframe.item(row, 4).text())
 
     def setup_adsb(self):
         pass
