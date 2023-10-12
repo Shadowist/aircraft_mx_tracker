@@ -71,9 +71,24 @@ class MainWindow(QMainWindow):
         self._setup_mx_data("Airframe")
 
         self.ui.table_airframe.itemClicked.connect(self.connect_airframe_form)
+        self.ui.airframe_save.clicked.connect(self.save_airframe_entry)
+
+    def save_airframe_entry(self):
+        data: list = []
+
+        data.append(self.ui.airframe_date.text())
+        data.append(self.ui.airframe_ttaf.value())
+        data.append(self.ui.airframe_tach.value())
+        data.append(self.ui.airframe_description.toPlainText())
+
+        mx_utils.save_log(self._conn, "Airframe", self.ui.airframe_id.value(), tuple(data))
+
+        self.setup_airframe()
 
     def connect_airframe_form(self, item: QTableWidgetItem):
         row = self.ui.table_airframe.row(item)
+
+        self.ui.airframe_id.setValue(int(self.ui.table_airframe.item(row, 0).text()))
 
         date_val: list[str] = self.ui.table_airframe.item(row, 1).text().split('-')
         date: QDate = QDate(int(date_val[0]), int(date_val[1]), int(date_val[2]))
