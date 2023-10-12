@@ -16,21 +16,23 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QHeaderView, QMainWindow, QMenu,
-    QMenuBar, QSizePolicy, QStatusBar, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QDateEdit, QDoubleSpinBox, QFormLayout,
+    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
+    QMenu, QMenuBar, QScrollArea, QSizePolicy,
+    QSplitter, QStatusBar, QTabWidget, QTableWidget,
+    QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(1049, 684)
         self.actionExit = QAction(MainWindow)
         self.actionExit.setObjectName(u"actionExit")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout = QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tab_dashboard = QWidget()
@@ -43,9 +45,12 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_squawks, "")
         self.tab_airframe = QWidget()
         self.tab_airframe.setObjectName(u"tab_airframe")
-        self.verticalLayout_3 = QVBoxLayout(self.tab_airframe)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.table_airframe = QTableWidget(self.tab_airframe)
+        self.verticalLayout = QVBoxLayout(self.tab_airframe)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.splitter = QSplitter(self.tab_airframe)
+        self.splitter.setObjectName(u"splitter")
+        self.splitter.setOrientation(Qt.Horizontal)
+        self.table_airframe = QTableWidget(self.splitter)
         if (self.table_airframe.columnCount() < 4):
             self.table_airframe.setColumnCount(4)
         __qtablewidgetitem = QTableWidgetItem()
@@ -57,8 +62,59 @@ class Ui_MainWindow(object):
         __qtablewidgetitem3 = QTableWidgetItem()
         self.table_airframe.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         self.table_airframe.setObjectName(u"table_airframe")
+        self.splitter.addWidget(self.table_airframe)
+        self.scrollArea = QScrollArea(self.splitter)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 308, 552))
+        self.formLayout = QFormLayout(self.scrollAreaWidgetContents)
+        self.formLayout.setObjectName(u"formLayout")
+        self.label = QLabel(self.scrollAreaWidgetContents)
+        self.label.setObjectName(u"label")
 
-        self.verticalLayout_3.addWidget(self.table_airframe)
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
+
+        self.airframe_date = QDateEdit(self.scrollAreaWidgetContents)
+        self.airframe_date.setObjectName(u"airframe_date")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.airframe_date)
+
+        self.label_2 = QLabel(self.scrollAreaWidgetContents)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
+
+        self.airfrace_ttaf = QDoubleSpinBox(self.scrollAreaWidgetContents)
+        self.airfrace_ttaf.setObjectName(u"airfrace_ttaf")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.airfrace_ttaf)
+
+        self.label_3 = QLabel(self.scrollAreaWidgetContents)
+        self.label_3.setObjectName(u"label_3")
+
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_3)
+
+        self.airframe_tach = QDoubleSpinBox(self.scrollAreaWidgetContents)
+        self.airframe_tach.setObjectName(u"airframe_tach")
+
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.airframe_tach)
+
+        self.airframe_description = QTextBrowser(self.scrollAreaWidgetContents)
+        self.airframe_description.setObjectName(u"airframe_description")
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.airframe_description)
+
+        self.label_4 = QLabel(self.scrollAreaWidgetContents)
+        self.label_4.setObjectName(u"label_4")
+
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_4)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.splitter.addWidget(self.scrollArea)
+
+        self.verticalLayout.addWidget(self.splitter)
 
         self.tabWidget.addTab(self.tab_airframe, "")
         self.tab_engine = QWidget()
@@ -145,12 +201,12 @@ class Ui_MainWindow(object):
         self.tab_intervals.setObjectName(u"tab_intervals")
         self.tabWidget.addTab(self.tab_intervals, "")
 
-        self.verticalLayout.addWidget(self.tabWidget)
+        self.horizontalLayout.addWidget(self.tabWidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 24))
+        self.menubar.setGeometry(QRect(0, 0, 1049, 24))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
@@ -166,7 +222,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -188,6 +244,10 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
         ___qtablewidgetitem3 = self.table_airframe.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Date", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"TTAF", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Tach", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Description", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_airframe), QCoreApplication.translate("MainWindow", u"Airframe", None))
         ___qtablewidgetitem4 = self.table_engine.horizontalHeaderItem(0)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Date", None));
