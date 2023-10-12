@@ -2,6 +2,8 @@
 import sys
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
+from PySide6.QtCore import QDate
+
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -49,8 +51,8 @@ class MainWindow(QMainWindow):
             name = "adsb"
 
         try:
-            self._setup_mx_data(name)
-        except sqlite3.OperationalError:
+            getattr(self, f"setup_{name}")()
+        except AttributeError:
             print(f"{name} is not currently set up!")
 
     def _setup_mx_data(self, logbook: str):
@@ -63,6 +65,22 @@ class MainWindow(QMainWindow):
                 item: QTableWidgetItem = QTableWidgetItem(str(value))
                 getattr(self.ui, f"table_{logbook.lower()}").setItem(row, column, item)
         getattr(self.ui, f"table_{logbook.lower()}").resizeColumnsToContents()
+
+    def setup_airframe(self):
+        self._setup_mx_data("Airframe")
+
+        self.ui.table_airframe.itemClicked.connect(self.connect_airframe_form)
+
+    def connect_airframe_form(self, item: QTableWidgetItem):
+        row = self.ui.table_airframe.row(item)
+
+        date_val: list[str] = self.ui.table_airframe.item(row, 0).text().split('-')
+        date: QDate = QDate(int(date_val[0]), int(date_val[1]), int(date_val[2]))
+
+        self.ui.airframe_date.setDate(date)
+        self.ui.airframe_ttaf.setValue(float(self.ui.table_airframe.item(row, 1).text()))
+        self.ui.airframe_tach.setValue(float(self.ui.table_airframe.item(row, 2).text()))
+        self.ui.airframe_description.setText(self.ui.table_airframe.item(row, 3).text())
 
     def setup_adsb(self):
         pass
