@@ -103,6 +103,7 @@ class Ui_MainWindow(object):
 
         self.airframe_ttaf = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.airframe_ttaf.setObjectName(u"airframe_ttaf")
+        self.airframe_ttaf.setDecimals(1)
         self.airframe_ttaf.setMaximum(1000000.000000000000000)
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.airframe_ttaf)
@@ -114,6 +115,7 @@ class Ui_MainWindow(object):
 
         self.airframe_tach = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.airframe_tach.setObjectName(u"airframe_tach")
+        self.airframe_tach.setDecimals(1)
         self.airframe_tach.setMinimum(0.000000000000000)
         self.airframe_tach.setMaximum(1000000.000000000000000)
 
