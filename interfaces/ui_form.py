@@ -92,6 +92,7 @@ class Ui_MainWindow(object):
 
         self.airframe_date = QDateEdit(self.scrollAreaWidgetContents)
         self.airframe_date.setObjectName(u"airframe_date")
+        self.airframe_date.setDateTime(QDateTime(QDate(1999, 8, 30), QTime(0, 0, 0)))
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.airframe_date)
 
@@ -270,6 +271,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Description", None));
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"id", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Date", None))
+        self.airframe_date.setDisplayFormat(QCoreApplication.translate("MainWindow", u"yyyy-MM-dd", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"TTAF", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Tach", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Description", None))
