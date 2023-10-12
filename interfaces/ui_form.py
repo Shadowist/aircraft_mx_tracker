@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QDateEdit, QDoubleSpinBox, QFormLay
     QHBoxLayout, QHeaderView, QLabel, QMainWindow,
     QMenu, QMenuBar, QScrollArea, QSizePolicy,
     QSplitter, QStatusBar, QTabWidget, QTableWidget,
-    QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget)
+    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -86,10 +86,11 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
 
-        self.airfrace_ttaf = QDoubleSpinBox(self.scrollAreaWidgetContents)
-        self.airfrace_ttaf.setObjectName(u"airfrace_ttaf")
+        self.airframe_ttaf = QDoubleSpinBox(self.scrollAreaWidgetContents)
+        self.airframe_ttaf.setObjectName(u"airframe_ttaf")
+        self.airframe_ttaf.setMaximum(1000000.000000000000000)
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.airfrace_ttaf)
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.airframe_ttaf)
 
         self.label_3 = QLabel(self.scrollAreaWidgetContents)
         self.label_3.setObjectName(u"label_3")
@@ -98,18 +99,20 @@ class Ui_MainWindow(object):
 
         self.airframe_tach = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.airframe_tach.setObjectName(u"airframe_tach")
+        self.airframe_tach.setMinimum(0.000000000000000)
+        self.airframe_tach.setMaximum(1000000.000000000000000)
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.airframe_tach)
-
-        self.airframe_description = QTextBrowser(self.scrollAreaWidgetContents)
-        self.airframe_description.setObjectName(u"airframe_description")
-
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.airframe_description)
 
         self.label_4 = QLabel(self.scrollAreaWidgetContents)
         self.label_4.setObjectName(u"label_4")
 
         self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_4)
+
+        self.airframe_description = QTextEdit(self.scrollAreaWidgetContents)
+        self.airframe_description.setObjectName(u"airframe_description")
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.airframe_description)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.splitter.addWidget(self.scrollArea)
