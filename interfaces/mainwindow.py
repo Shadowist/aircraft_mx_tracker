@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -9,13 +9,21 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 #     pyside2-uic form.ui -o ui_form.py
 from .ui_form import Ui_MainWindow
 
+from source import mx_utils
+import sqlite3
+from source import sql_utils
+
 
 class MainWindow(QMainWindow):
+    _conn: sqlite3.Connection
+    _filepath: str
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # Signals/Slots
         self.ui.tabWidget.currentChanged.connect(self.setup_tab)
 
     @property
@@ -26,11 +34,15 @@ class MainWindow(QMainWindow):
     def filepath(self, filepath: str):
         self._filepath = filepath
 
+        # Create Sqlite Connection
+        self._conn = sql_utils.create_connection(self._filepath)
+
         # TODO: This should be platform agnostic
-        self.setWindowTitle(filepath.split("/")[-1])
+        self.setWindowTitle(self._filepath.split("/")[-1])
 
     # === Tab Setup ===
     def setup_tab(self, index: int):
+        """ General tab entry point """
         name: str = self.ui.tabWidget.tabText(index).lower()
 
         if name == "ad/sb":
@@ -41,17 +53,50 @@ class MainWindow(QMainWindow):
         except AttributeError:
             print(f"{name} is not currently set up!")
 
+    # TODO: Lots of copy pasta, need to refactor
     def setup_airframe(self):
-        pass
+        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Airframe")
+        res: list[tuple] = cur.fetchall()
+
+        self.ui.table_airframe.setRowCount(len(res))
+        for row, entry in enumerate(res):
+            for column, value in enumerate(entry):
+                item: QTableWidgetItem = QTableWidgetItem(str(value))
+                self.ui.table_airframe.setItem(row, column, item)
+        self.ui.table_airframe.resizeColumnsToContents()
 
     def setup_engine(self):
-        pass
+        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Engine")
+        res: list[tuple] = cur.fetchall()
+
+        self.ui.table_engine.setRowCount(len(res))
+        for row, entry in enumerate(res):
+            for column, value in enumerate(entry):
+                item: QTableWidgetItem = QTableWidgetItem(str(value))
+                self.ui.table_engine.setItem(row, column, item)
+        self.ui.table_engine.resizeColumnsToContents()
 
     def setup_avionics(self):
-        pass
+        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Avionics")
+        res: list[tuple] = cur.fetchall()
+
+        self.ui.table_avionics.setRowCount(len(res))
+        for row, entry in enumerate(res):
+            for column, value in enumerate(entry):
+                item: QTableWidgetItem = QTableWidgetItem(str(value))
+                self.ui.table_avionics.setItem(row, column, item)
+        self.ui.table_avionics.resizeColumnsToContents()
 
     def setup_propeller(self):
-        pass
+        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Propeller")
+        res: list[tuple] = cur.fetchall()
+
+        self.ui.table_propeller.setRowCount(len(res))
+        for row, entry in enumerate(res):
+            for column, value in enumerate(entry):
+                item: QTableWidgetItem = QTableWidgetItem(str(value))
+                self.ui.table_propeller.setItem(row, column, item)
+        self.ui.table_propeller.resizeColumnsToContents()
 
     def setup_adsb(self):
         pass
