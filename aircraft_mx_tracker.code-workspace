@@ -63,7 +63,7 @@
 					"--open",
 					"--filename",
 					"databases/N219GH"
-				]
+				],
 			}
 		],
 	},
@@ -85,7 +85,28 @@
 				"presentation": {
 					"reveal": "always"
 				},
-				"group": "build"
+				// "group": "build"
+			},
+			{
+				"label": "Rebuild",
+				"command": "python3",
+				"type": "shell",
+				"args": [
+					"main.py",
+					"--new",
+					"--filename",
+					"N219GH"
+				],
+				"problemMatcher":[
+					"$tsc"
+				],
+				"presentation": {
+					"reveal": "always",
+				},
+				"group": "build",
+				"dependsOn":[
+					"Convert UI"
+				]
 			}
 		]
 	}
