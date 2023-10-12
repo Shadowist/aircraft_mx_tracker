@@ -59,6 +59,7 @@ class MainWindow(QMainWindow):
         cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, logbook)
         res: list[tuple] = cur.fetchall()
 
+        getattr(self.ui, f"table_{logbook.lower()}").clearContents()
         getattr(self.ui, f"table_{logbook.lower()}").setRowCount(len(res))
         for row, entry in enumerate(res):
             for column, value in enumerate(entry):
