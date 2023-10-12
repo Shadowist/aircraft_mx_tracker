@@ -18,9 +18,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QDoubleSpinBox, QFormLayout,
     QHBoxLayout, QHeaderView, QLabel, QMainWindow,
-    QMenu, QMenuBar, QScrollArea, QSizePolicy,
-    QSplitter, QStatusBar, QTabWidget, QTableWidget,
-    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
+    QMenu, QMenuBar, QPushButton, QScrollArea,
+    QSizePolicy, QSpinBox, QSplitter, QStatusBar,
+    QTabWidget, QTableWidget, QTableWidgetItem, QTextEdit,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -73,48 +74,64 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 308, 552))
         self.formLayout = QFormLayout(self.scrollAreaWidgetContents)
         self.formLayout.setObjectName(u"formLayout")
+        self.label_5 = QLabel(self.scrollAreaWidgetContents)
+        self.label_5.setObjectName(u"label_5")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label_5)
+
+        self.airframe_id = QSpinBox(self.scrollAreaWidgetContents)
+        self.airframe_id.setObjectName(u"airframe_id")
+        self.airframe_id.setEnabled(False)
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.airframe_id)
+
         self.label = QLabel(self.scrollAreaWidgetContents)
         self.label.setObjectName(u"label")
 
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label)
 
         self.airframe_date = QDateEdit(self.scrollAreaWidgetContents)
         self.airframe_date.setObjectName(u"airframe_date")
 
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.airframe_date)
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.airframe_date)
 
         self.label_2 = QLabel(self.scrollAreaWidgetContents)
         self.label_2.setObjectName(u"label_2")
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_2)
 
         self.airframe_ttaf = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.airframe_ttaf.setObjectName(u"airframe_ttaf")
         self.airframe_ttaf.setMaximum(1000000.000000000000000)
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.airframe_ttaf)
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.airframe_ttaf)
 
         self.label_3 = QLabel(self.scrollAreaWidgetContents)
         self.label_3.setObjectName(u"label_3")
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_3)
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_3)
 
         self.airframe_tach = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.airframe_tach.setObjectName(u"airframe_tach")
         self.airframe_tach.setMinimum(0.000000000000000)
         self.airframe_tach.setMaximum(1000000.000000000000000)
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.airframe_tach)
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.airframe_tach)
 
         self.label_4 = QLabel(self.scrollAreaWidgetContents)
         self.label_4.setObjectName(u"label_4")
 
-        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_4)
+        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.label_4)
 
         self.airframe_description = QTextEdit(self.scrollAreaWidgetContents)
         self.airframe_description.setObjectName(u"airframe_description")
 
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.airframe_description)
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.airframe_description)
+
+        self.airframe_save = QPushButton(self.scrollAreaWidgetContents)
+        self.airframe_save.setObjectName(u"airframe_save")
+
+        self.formLayout.setWidget(5, QFormLayout.SpanningRole, self.airframe_save)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.splitter.addWidget(self.scrollArea)
@@ -251,10 +268,12 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
         ___qtablewidgetitem4 = self.table_airframe.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"id", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Date", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"TTAF", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Tach", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Description", None))
+        self.airframe_save.setText(QCoreApplication.translate("MainWindow", u"Save Changes", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_airframe), QCoreApplication.translate("MainWindow", u"Airframe", None))
         ___qtablewidgetitem5 = self.table_engine.horizontalHeaderItem(0)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Date", None));
