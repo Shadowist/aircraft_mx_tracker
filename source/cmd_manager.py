@@ -1,7 +1,6 @@
-""" Handles any application specific SQL calls. """
+""" Contains all the sql scripts to be used """
 
-import sqlite3
-from . import sql_utils
+from .sql_manager import sql_manager
 from pathlib import Path
 import csv
 import os
@@ -16,18 +15,18 @@ def create_plane_database(tail_number: str, mx_csv: str = "", overwrite=False) -
         except OSError:
             pass
 
-    conn: sqlite3.Connection = sql_utils.create_connection(f"databases/{tail_number}")
+    sql: sql_manager = sql_manager.open_file(f"databases/{tail_number}")
 
-    _create_tables(conn)
+    _create_tables(sql)
 
     if mx_csv:
-        _import_mx_from_csv(mx_csv, conn)
+        _import_mx_from_csv(mx_csv, sql)
 
 
-def _create_tables(conn: sqlite3.Connection) -> None:
+def _create_tables(sql: sql_manager) -> None:
     logbooks = ["Airframe", "Avionics", "Engine", "Propeller"]
     for logbook in logbooks:
-        conn.execute(f"""
+        sql.execute(f"""
             CREATE TABLE IF NOT EXISTS {logbook} (
                 "Tail Number"       TEXT,
                 "Logbook"           TEXT,
@@ -38,7 +37,7 @@ def _create_tables(conn: sqlite3.Connection) -> None:
             );
         """)
 
-    conn.execute("""
+    sql.execute("""
         CREATE TABLE IF NOT EXISTS Squawks (
             "Date"          TEXT,
             "Title"         TEXT,
@@ -49,7 +48,7 @@ def _create_tables(conn: sqlite3.Connection) -> None:
     """)
 
 
-def _import_mx_from_csv(filename: str, conn: sqlite3.Connection):
+def _import_mx_from_csv(filename: str, sql: sql_manager):
     path = Path(filename)
     if not path.exists():
         raise Exception("Path does not exist!")
@@ -58,8 +57,6 @@ def _import_mx_from_csv(filename: str, conn: sqlite3.Connection):
         reader = csv.DictReader(csvfile, delimiter=',')
 
         for index, row in enumerate(reader):
-            cur = conn.cursor()
-
             desc = row['Work Description'].replace('"', '\'')
             ttaf = -1
             tach = -1
@@ -87,28 +84,23 @@ VALUES(
     {tach}
 )
 """
-            cur.execute(cmd)
-    conn.commit()
+            sql.execute(cmd)
+    sql.commit()
 
 
-def get_logs(conn: sqlite3.Connection, logbook: str):
-    cur = conn.cursor()
-
+def get_logs(sql: sql_manager, logbook: str):
     cmd = f'''
 SELECT ROWID, "Date of Service", TTAF, Tach, "Work Description" FROM {logbook}
 '''
 
-    return cur.execute(cmd)
+    return sql.execute(cmd).fetchall()
 
 
-def save_log(conn: sqlite3.Connection, logbook: str, id: int, values: tuple):
-    cur = conn.cursor()
-
+def save_log(sql: sql_manager, logbook: str, id: int, values: tuple):
     cmd = f'''
 UPDATE {logbook}
 SET "Date of Service"="{values[0]}", TTAF={values[1]}, Tach={values[2]}, "Work Description"="{values[3]}"
 WHERE ROWID={id};
 '''
 
-    cur.execute(cmd)
-    conn.commit()
+    sql.execute_commit(cmd)

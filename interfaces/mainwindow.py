@@ -11,13 +11,12 @@ from PySide6.QtCore import QDate
 #     pyside2-uic form.ui -o ui_form.py
 from .ui_form import Ui_MainWindow
 
-from source import mx_utils
-import sqlite3
-from source import sql_utils
+from source import cmd_manager
+from source.sql_manager import sql_manager
 
 
 class MainWindow(QMainWindow):
-    _conn: sqlite3.Connection
+    _sql: sql_manager
     _filepath: str
 
     def __init__(self, parent=None):
@@ -37,7 +36,7 @@ class MainWindow(QMainWindow):
         self._filepath = filepath
 
         # Create Sqlite Connection
-        self._conn = sql_utils.create_connection(self._filepath)
+        self._sql = sql_manager.open_file(self._filepath)
 
         # TODO: This should be platform agnostic
         self.setWindowTitle(self._filepath.split("/")[-1])
@@ -56,8 +55,7 @@ class MainWindow(QMainWindow):
             print(f"{name} is not currently set up!")
 
     def _setup_mx_data(self, logbook: str):
-        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, logbook)
-        res: list[tuple] = cur.fetchall()
+        res: list[tuple] = cmd_manager.get_logs(self._sql, logbook)
 
         getattr(self.ui, f"table_{logbook.lower()}").clearContents()
         getattr(self.ui, f"table_{logbook.lower()}").setRowCount(len(res))
@@ -82,7 +80,7 @@ class MainWindow(QMainWindow):
         data.append(self.ui.airframe_tach.value())
         data.append(self.ui.airframe_description.toPlainText())
 
-        mx_utils.save_log(self._conn, "Airframe", self.ui.airframe_id.value(), tuple(data))
+        cmd_manager.save_log(self._sql, "Airframe", self.ui.airframe_id.value(), tuple(data))
 
         self.setup_airframe()
 

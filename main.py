@@ -1,6 +1,6 @@
 import argparse
 from os import path
-from source import mx_utils
+from source import cmd_manager
 import sys
 from interfaces.mainwindow import MainWindow
 
@@ -8,7 +8,7 @@ from PySide6.QtWidgets import QApplication
 
 
 def new(filename: str):
-    mx_utils.create_plane_database(filename, mx_csv="mx_records.csv", overwrite=True)
+    cmd_manager.create_plane_database(filename, mx_csv="mx_records.csv", overwrite=True)
 
 
 def open(filename: str):
