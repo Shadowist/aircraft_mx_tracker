@@ -104,9 +104,9 @@
 					"reveal": "always",
 				},
 				"group": "build",
-				"dependsOn":[
-					"Convert UI"
-				]
+				// "dependsOn":[
+				// 	"Convert UI"
+				// ]
 			}
 		]
 	}
