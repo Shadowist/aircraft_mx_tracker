@@ -99,3 +99,16 @@ SELECT ROWID, "Date of Service", TTAF, Tach, "Work Description" FROM {logbook}
 '''
 
     return cur.execute(cmd)
+
+
+def save_log(conn: sqlite3.Connection, logbook: str, id: int, values: tuple):
+    cur = conn.cursor()
+
+    cmd = f'''
+UPDATE {logbook}
+SET "Date of Service"={values[0]}, TTAF={values[1]}, Tach={values[2]}, "Work Description"="{values[3]}"
+WHERE ROWID={id};
+'''
+
+    cur.execute(cmd)
+    conn.commit()
