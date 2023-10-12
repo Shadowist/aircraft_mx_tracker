@@ -49,54 +49,20 @@ class MainWindow(QMainWindow):
             name = "adsb"
 
         try:
-            getattr(self, f"setup_{name}")()
-        except AttributeError:
+            self._setup_mx_data(name)
+        except sqlite3.OperationalError:
             print(f"{name} is not currently set up!")
 
-    # TODO: Lots of copy pasta, need to refactor
-    def setup_airframe(self):
-        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Airframe")
+    def _setup_mx_data(self, logbook: str):
+        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, logbook)
         res: list[tuple] = cur.fetchall()
 
-        self.ui.table_airframe.setRowCount(len(res))
+        getattr(self.ui, f"table_{logbook.lower()}").setRowCount(len(res))
         for row, entry in enumerate(res):
             for column, value in enumerate(entry):
                 item: QTableWidgetItem = QTableWidgetItem(str(value))
-                self.ui.table_airframe.setItem(row, column, item)
-        self.ui.table_airframe.resizeColumnsToContents()
-
-    def setup_engine(self):
-        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Engine")
-        res: list[tuple] = cur.fetchall()
-
-        self.ui.table_engine.setRowCount(len(res))
-        for row, entry in enumerate(res):
-            for column, value in enumerate(entry):
-                item: QTableWidgetItem = QTableWidgetItem(str(value))
-                self.ui.table_engine.setItem(row, column, item)
-        self.ui.table_engine.resizeColumnsToContents()
-
-    def setup_avionics(self):
-        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Avionics")
-        res: list[tuple] = cur.fetchall()
-
-        self.ui.table_avionics.setRowCount(len(res))
-        for row, entry in enumerate(res):
-            for column, value in enumerate(entry):
-                item: QTableWidgetItem = QTableWidgetItem(str(value))
-                self.ui.table_avionics.setItem(row, column, item)
-        self.ui.table_avionics.resizeColumnsToContents()
-
-    def setup_propeller(self):
-        cur: sqlite3.Cursor = mx_utils.get_logs(self._conn, "Propeller")
-        res: list[tuple] = cur.fetchall()
-
-        self.ui.table_propeller.setRowCount(len(res))
-        for row, entry in enumerate(res):
-            for column, value in enumerate(entry):
-                item: QTableWidgetItem = QTableWidgetItem(str(value))
-                self.ui.table_propeller.setItem(row, column, item)
-        self.ui.table_propeller.resizeColumnsToContents()
+                getattr(self.ui, f"table_{logbook.lower()}").setItem(row, column, item)
+        getattr(self.ui, f"table_{logbook.lower()}").resizeColumnsToContents()
 
     def setup_adsb(self):
         pass
