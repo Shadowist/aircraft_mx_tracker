@@ -85,3 +85,13 @@ VALUES(
 """
             cur.execute(cmd)
     conn.commit()
+
+
+def get_logs(conn: sqlite3.Connection, logbook: str):
+    cur = conn.cursor()
+
+    cmd = f'''
+SELECT "Date of Service", TTAF, Tach, "Work Description" FROM {logbook}
+'''
+
+    return cur.execute(cmd)
