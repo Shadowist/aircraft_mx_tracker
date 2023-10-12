@@ -51,8 +51,8 @@ class Ui_MainWindow(object):
         self.splitter.setObjectName(u"splitter")
         self.splitter.setOrientation(Qt.Horizontal)
         self.table_airframe = QTableWidget(self.splitter)
-        if (self.table_airframe.columnCount() < 4):
-            self.table_airframe.setColumnCount(4)
+        if (self.table_airframe.columnCount() < 5):
+            self.table_airframe.setColumnCount(5)
         __qtablewidgetitem = QTableWidgetItem()
         self.table_airframe.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -61,6 +61,8 @@ class Ui_MainWindow(object):
         self.table_airframe.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.table_airframe.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.table_airframe.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.table_airframe.setObjectName(u"table_airframe")
         self.splitter.addWidget(self.table_airframe)
         self.scrollArea = QScrollArea(self.splitter)
@@ -127,14 +129,14 @@ class Ui_MainWindow(object):
         self.table_engine = QTableWidget(self.tab_engine)
         if (self.table_engine.columnCount() < 4):
             self.table_engine.setColumnCount(4)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.table_engine.setHorizontalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
-        self.table_engine.setHorizontalHeaderItem(1, __qtablewidgetitem5)
+        self.table_engine.setHorizontalHeaderItem(0, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
-        self.table_engine.setHorizontalHeaderItem(2, __qtablewidgetitem6)
+        self.table_engine.setHorizontalHeaderItem(1, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
-        self.table_engine.setHorizontalHeaderItem(3, __qtablewidgetitem7)
+        self.table_engine.setHorizontalHeaderItem(2, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.table_engine.setHorizontalHeaderItem(3, __qtablewidgetitem8)
         self.table_engine.setObjectName(u"table_engine")
 
         self.verticalLayout_5.addWidget(self.table_engine)
@@ -147,14 +149,14 @@ class Ui_MainWindow(object):
         self.table_propeller = QTableWidget(self.tab_propeller)
         if (self.table_propeller.columnCount() < 4):
             self.table_propeller.setColumnCount(4)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.table_propeller.setHorizontalHeaderItem(0, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
-        self.table_propeller.setHorizontalHeaderItem(1, __qtablewidgetitem9)
+        self.table_propeller.setHorizontalHeaderItem(0, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
-        self.table_propeller.setHorizontalHeaderItem(2, __qtablewidgetitem10)
+        self.table_propeller.setHorizontalHeaderItem(1, __qtablewidgetitem10)
         __qtablewidgetitem11 = QTableWidgetItem()
-        self.table_propeller.setHorizontalHeaderItem(3, __qtablewidgetitem11)
+        self.table_propeller.setHorizontalHeaderItem(2, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.table_propeller.setHorizontalHeaderItem(3, __qtablewidgetitem12)
         self.table_propeller.setObjectName(u"table_propeller")
 
         self.verticalLayout_6.addWidget(self.table_propeller)
@@ -167,14 +169,14 @@ class Ui_MainWindow(object):
         self.table_avionics = QTableWidget(self.tab_avionics)
         if (self.table_avionics.columnCount() < 4):
             self.table_avionics.setColumnCount(4)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        self.table_avionics.setHorizontalHeaderItem(0, __qtablewidgetitem12)
         __qtablewidgetitem13 = QTableWidgetItem()
-        self.table_avionics.setHorizontalHeaderItem(1, __qtablewidgetitem13)
+        self.table_avionics.setHorizontalHeaderItem(0, __qtablewidgetitem13)
         __qtablewidgetitem14 = QTableWidgetItem()
-        self.table_avionics.setHorizontalHeaderItem(2, __qtablewidgetitem14)
+        self.table_avionics.setHorizontalHeaderItem(1, __qtablewidgetitem14)
         __qtablewidgetitem15 = QTableWidgetItem()
-        self.table_avionics.setHorizontalHeaderItem(3, __qtablewidgetitem15)
+        self.table_avionics.setHorizontalHeaderItem(2, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.table_avionics.setHorizontalHeaderItem(3, __qtablewidgetitem16)
         self.table_avionics.setObjectName(u"table_avionics")
 
         self.verticalLayout_4.addWidget(self.table_avionics)
@@ -187,14 +189,14 @@ class Ui_MainWindow(object):
         self.table_adsb = QTableWidget(self.tab_adsb)
         if (self.table_adsb.columnCount() < 4):
             self.table_adsb.setColumnCount(4)
-        __qtablewidgetitem16 = QTableWidgetItem()
-        self.table_adsb.setHorizontalHeaderItem(0, __qtablewidgetitem16)
         __qtablewidgetitem17 = QTableWidgetItem()
-        self.table_adsb.setHorizontalHeaderItem(1, __qtablewidgetitem17)
+        self.table_adsb.setHorizontalHeaderItem(0, __qtablewidgetitem17)
         __qtablewidgetitem18 = QTableWidgetItem()
-        self.table_adsb.setHorizontalHeaderItem(2, __qtablewidgetitem18)
+        self.table_adsb.setHorizontalHeaderItem(1, __qtablewidgetitem18)
         __qtablewidgetitem19 = QTableWidgetItem()
-        self.table_adsb.setHorizontalHeaderItem(3, __qtablewidgetitem19)
+        self.table_adsb.setHorizontalHeaderItem(2, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.table_adsb.setHorizontalHeaderItem(3, __qtablewidgetitem20)
         self.table_adsb.setObjectName(u"table_adsb")
 
         self.verticalLayout_7.addWidget(self.table_adsb)
@@ -240,53 +242,55 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_dashboard), QCoreApplication.translate("MainWindow", u"Dashboard", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_squawks), QCoreApplication.translate("MainWindow", u"Squawks", None))
         ___qtablewidgetitem = self.table_airframe.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Date", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"id", None));
         ___qtablewidgetitem1 = self.table_airframe.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Date", None));
         ___qtablewidgetitem2 = self.table_airframe.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
         ___qtablewidgetitem3 = self.table_airframe.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
+        ___qtablewidgetitem4 = self.table_airframe.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Description", None));
         self.label.setText(QCoreApplication.translate("MainWindow", u"Date", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"TTAF", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Tach", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Description", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_airframe), QCoreApplication.translate("MainWindow", u"Airframe", None))
-        ___qtablewidgetitem4 = self.table_engine.horizontalHeaderItem(0)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Date", None));
-        ___qtablewidgetitem5 = self.table_engine.horizontalHeaderItem(1)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
-        ___qtablewidgetitem6 = self.table_engine.horizontalHeaderItem(2)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
-        ___qtablewidgetitem7 = self.table_engine.horizontalHeaderItem(3)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        ___qtablewidgetitem5 = self.table_engine.horizontalHeaderItem(0)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Date", None));
+        ___qtablewidgetitem6 = self.table_engine.horizontalHeaderItem(1)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
+        ___qtablewidgetitem7 = self.table_engine.horizontalHeaderItem(2)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
+        ___qtablewidgetitem8 = self.table_engine.horizontalHeaderItem(3)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Description", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_engine), QCoreApplication.translate("MainWindow", u"Engine", None))
-        ___qtablewidgetitem8 = self.table_propeller.horizontalHeaderItem(0)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Date", None));
-        ___qtablewidgetitem9 = self.table_propeller.horizontalHeaderItem(1)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
-        ___qtablewidgetitem10 = self.table_propeller.horizontalHeaderItem(2)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
-        ___qtablewidgetitem11 = self.table_propeller.horizontalHeaderItem(3)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        ___qtablewidgetitem9 = self.table_propeller.horizontalHeaderItem(0)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Date", None));
+        ___qtablewidgetitem10 = self.table_propeller.horizontalHeaderItem(1)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
+        ___qtablewidgetitem11 = self.table_propeller.horizontalHeaderItem(2)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
+        ___qtablewidgetitem12 = self.table_propeller.horizontalHeaderItem(3)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Description", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_propeller), QCoreApplication.translate("MainWindow", u"Propeller", None))
-        ___qtablewidgetitem12 = self.table_avionics.horizontalHeaderItem(0)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Date", None));
-        ___qtablewidgetitem13 = self.table_avionics.horizontalHeaderItem(1)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
-        ___qtablewidgetitem14 = self.table_avionics.horizontalHeaderItem(2)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
-        ___qtablewidgetitem15 = self.table_avionics.horizontalHeaderItem(3)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        ___qtablewidgetitem13 = self.table_avionics.horizontalHeaderItem(0)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"Date", None));
+        ___qtablewidgetitem14 = self.table_avionics.horizontalHeaderItem(1)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"TTAF", None));
+        ___qtablewidgetitem15 = self.table_avionics.horizontalHeaderItem(2)
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"Tach", None));
+        ___qtablewidgetitem16 = self.table_avionics.horizontalHeaderItem(3)
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"Description", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_avionics), QCoreApplication.translate("MainWindow", u"Avionics", None))
-        ___qtablewidgetitem16 = self.table_adsb.horizontalHeaderItem(0)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"Logbook", None));
-        ___qtablewidgetitem17 = self.table_adsb.horizontalHeaderItem(1)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"Status", None));
-        ___qtablewidgetitem18 = self.table_adsb.horizontalHeaderItem(2)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"Event", None));
-        ___qtablewidgetitem19 = self.table_adsb.horizontalHeaderItem(3)
-        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"Description", None));
+        ___qtablewidgetitem17 = self.table_adsb.horizontalHeaderItem(0)
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"Logbook", None));
+        ___qtablewidgetitem18 = self.table_adsb.horizontalHeaderItem(1)
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        ___qtablewidgetitem19 = self.table_adsb.horizontalHeaderItem(2)
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"Event", None));
+        ___qtablewidgetitem20 = self.table_adsb.horizontalHeaderItem(3)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"Description", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_adsb), QCoreApplication.translate("MainWindow", u"AD/SB", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_intervals), QCoreApplication.translate("MainWindow", u"Intervals", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))

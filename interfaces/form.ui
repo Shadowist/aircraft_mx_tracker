@@ -44,6 +44,11 @@
           <widget class="QTableWidget" name="table_airframe">
            <column>
             <property name="text">
+             <string>id</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
              <string>Date</string>
             </property>
            </column>
